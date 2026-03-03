@@ -1,44 +1,126 @@
+* {
+  box-sizing: border-box;
+  font-family: "Comic Sans MS", "Segoe UI", system-ui;
+}
+
 body {
-text-align: center;
+  margin: 0;
+  height: 100vh;
+  background: #fde68a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.btn {
-height: 200px;
-width: 200px;
-border-radius: 20%;
-border: 10px solid black;
-margin: 2.5rem;
+/* Themes */
+body.theme1 { background: #fde68a; }
+body.theme2 { background: #bfdbfe; }
+body.theme3 { background: #fbcfe8; }
+body.dark   { background: #0f172a; }
+
+.top-bar {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  gap: 10px;
 }
 
-.btn-container {
-    display: flex;
-    justify-content: center;
+.top-bar select,
+.top-bar button {
+  padding: 6px 10px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
 }
 
-.yellow {
-    background-color: #f99b45;
-}
-.red {
-background-color: #d95980;
-}
-
-.purple {
-    background-color:#819ff9;
-}
-.green{
-background-color: #63aac0;
+/* Card */
+.card {
+  background: white;
+  width: 340px;
+  padding: 26px;
+  border-radius: 24px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
 }
 
-.flash{
-    background-color:white;
+body.dark .card {
+  background: #1e293b;
+  color: #e5e7eb;
 }
 
-.userflash{
-    background-color: green;
+.subtitle {
+  font-size: 14px;
+  opacity: 0.8;
 }
 
-#score {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #333;
+.status {
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 120px);
+  gap: 16px;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.pad {
+  width: 120px;
+  height: 120px;
+  font-size: 48px;
+  border-radius: 20px;
+  background: #fef3c7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.pad.active {
+  transform: scale(1.2) rotate(5deg);
+  background: #fde68a;
+}
+
+.ai-box {
+  min-height: 44px;
+  padding: 10px;
+  border-radius: 14px;
+  background: #e5e7eb;
+  margin-bottom: 14px;
+}
+
+body.dark .ai-box {
+  background: #334155;
+}
+
+#startBtn {
+  padding: 12px 26px;
+  border-radius: 999px;
+  border: none;
+  font-size: 16px;
+  background: #22c55e;
+  color: white;
+  cursor: pointer;
+}
+#startBtn:hover {
+  background: #16a34a;
+}
+#startBtn:disabled {
+  background: #a7f3d0;
+  cursor: not-allowed;
+}
+#startBtn:disabled:hover {
+  background: #a7f3d0;
+}
+.ai-box.loading::after {
+  content: " ⏳";
+  animation: blink 1s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
